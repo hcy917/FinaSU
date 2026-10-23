@@ -32,8 +32,19 @@ data class CapabilityState(
     /**
      * Structural ability to render the full shell. Deliberately independent of the transient
      * root probe so a recoverable root hiccup cannot swap the layout or drop navigation.
+     *
+     * A manager identity alone is enough. The kernel module and the manager are shipped
+     * separately, and a rebuilt manager routinely meets an older kernelsu.ko; gating the layout
+     * on [uapiCompatible] then hides every page but Home even though the supercall driver still
+     * answers. Mismatched builds get the full shell and individual calls fail on their own.
      */
-    val fullLayout: Boolean get() = isManager && uapiCompatible
+    val fullLayout: Boolean get() = isManager
+
+    /**
+     * The flashed kernel module reports a different UAPI than this manager was built against.
+     * Surfaced for diagnostics; it no longer restricts navigation.
+     */
+    val uapiMismatch: Boolean get() = isManager && !uapiCompatible
 
     /** All privileged operations are currently permitted. */
     val privileged: Boolean get() = fullLayout && rootStatus == RootShellStatus.Ready
@@ -99,11 +110,12 @@ object CapabilityRepository {
     /**
      * Fresh, consistent privileged gate for a new operation: re-reads identity (forcing a kernel
      * refresh so a just-revoked manager is observed) and probes root. Returns false when the app no
-     * longer holds a manager identity with matching UAPI, or has no ready root shell.
+     * longer holds a manager identity or has no ready root shell. A UAPI mismatch does not deny the
+     * operation: the specific supercall either works against the flashed module or reports failure.
      */
     suspend fun currentPrivileged(): Boolean {
         val id = readIdentity()
-        if (!(id.isManager && id.uapiCompatible)) return false
+        if (!id.isManager) return false
         return RootShell.awaitReady(false) == RootShellStatus.Ready
     }
 

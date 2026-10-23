@@ -31,9 +31,18 @@ class CapabilityStateTest {
     }
 
     @Test
-    fun `full layout needs both manager identity and matching uapi`() {
+    fun `full layout needs only a manager identity`() {
         assertFalse(state(manager = false, root = RootShellStatus.Ready).fullLayout)
-        assertFalse(state(uapi = false, root = RootShellStatus.Ready).fullLayout)
+        // A manager built against one kernel UAPI routinely meets a module from another build.
+        // The shell must stay reachable so the user can still reach every page.
+        assertTrue(state(uapi = false, root = RootShellStatus.Ready).fullLayout)
+    }
+
+    @Test
+    fun `uapi mismatch is reported without restricting the shell`() {
+        assertFalse(state(uapi = true).uapiMismatch)
+        assertTrue(state(uapi = false).uapiMismatch)
+        assertFalse(state(manager = false, uapi = false).uapiMismatch)
     }
 
     @Test
@@ -64,7 +73,7 @@ class CapabilityStateTest {
         // reserved for a structurally capable device whose root is transient or broken.
         assertFalse(state(manager = false, root = RootShellStatus.Probing).recovering)
         assertFalse(state(manager = false, root = RootShellStatus.Unavailable).rootFailed)
-        assertFalse(state(uapi = false, root = RootShellStatus.Unavailable).rootFailed)
+        assertFalse(state(manager = false, uapi = false, root = RootShellStatus.Unavailable).rootFailed)
     }
 
     @Test
