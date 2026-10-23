@@ -24,6 +24,10 @@
 #include "uapi/app_profile.h"
 #include "klog.h" // IWYU pragma: keep
 
+#if defined(KSU_TRUST_MANAGER_PACKAGE) && !defined(KSU_MANAGER_PACKAGE)
+#error "KSU_TRUST_MANAGER_PACKAGE requires KSU_MANAGER_PACKAGE"
+#endif
+
 typedef struct {
     unsigned size;
     const char *sha256;
@@ -460,6 +464,16 @@ bool is_manager_apk(char *path)
     }
 #endif
 
+#ifdef KSU_TRUST_MANAGER_PACKAGE
+    /*
+     * The package name matched, so accept the APK without checking its
+     * certificate. Used by builds that pin the manager by package name only,
+     * which keeps the manager recognised across signing-key rotations.
+     */
+    pr_info("manager package %s accepted without signature check\n", pkg);
+    return true;
+#else
     struct apk_sign_match match = { .index = -1 };
     return match_apk_signature(path, &match) && match.trusted;
+#endif
 }

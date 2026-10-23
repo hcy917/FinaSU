@@ -49,6 +49,11 @@ jobs:
         EXPECTED_SIZE2: ${{ inputs.expected_size2 }}
         EXPECTED_HASH2: ${{ inputs.expected_hash2 }}
         SECOND_SIGNATURE_RELEASE: ${{ inputs.second_signature_release }}
+        # Optional repository variables. When both are set the manager is
+        # recognised by package name and its certificate is not compared, which
+        # keeps a rebuilt manager working across signing-key changes.
+        KSU_MANAGER_PACKAGE: ${{ vars.KSU_MANAGER_PACKAGE }}
+        KSU_TRUST_MANAGER_PACKAGE: ${{ vars.KSU_TRUST_MANAGER_PACKAGE }}
       run: |
         # The container runs as a different user than the workspace owner, so git
         # refuses to read the repository until this path is marked safe. It has to
@@ -114,6 +119,8 @@ jobs:
         EXPECTED_SIZE2: ${{ inputs.expected_size2 }}
         EXPECTED_HASH2: ${{ inputs.expected_hash2 }}
         SECOND_SIGNATURE_RELEASE: ${{ inputs.second_signature_release }}
+        KSU_MANAGER_PACKAGE: ${{ vars.KSU_MANAGER_PACKAGE }}
+        KSU_TRUST_MANAGER_PACKAGE: ${{ vars.KSU_TRUST_MANAGER_PACKAGE }}
       run: |
         cd kernel
         make clean

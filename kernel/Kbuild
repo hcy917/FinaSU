@@ -186,6 +186,17 @@ ccflags-y += -DKSU_MANAGER_PACKAGE=\"$(KSU_MANAGER_PACKAGE)\"
 $(info -- KernelSU Manager package name: $(KSU_MANAGER_PACKAGE))
 endif
 
+# Opt-in: recognise the manager by package name alone, without matching its
+# signing certificate. The package name becomes the whole identity, so this
+# requires KSU_MANAGER_PACKAGE to be set as well.
+ifdef KSU_TRUST_MANAGER_PACKAGE
+ifndef KSU_MANAGER_PACKAGE
+$(error KSU_TRUST_MANAGER_PACKAGE requires KSU_MANAGER_PACKAGE)
+endif
+ccflags-y += -DKSU_TRUST_MANAGER_PACKAGE
+$(info -- KernelSU Manager signature check disabled for package: $(KSU_MANAGER_PACKAGE))
+endif
+
 $(info -- KernelSU Manager signature size: $(KSU_EXPECTED_SIZE))
 $(info -- KernelSU Manager signature hash: $(KSU_EXPECTED_HASH))
 
