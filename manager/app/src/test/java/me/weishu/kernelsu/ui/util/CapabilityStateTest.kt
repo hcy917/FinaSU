@@ -14,7 +14,7 @@ class CapabilityStateTest {
     private fun state(
         manager: Boolean = true,
         uapi: Boolean = true,
-        root: RootShellStatus,
+        root: RootShellStatus = RootShellStatus.Ready,
     ) = CapabilityState(
         isManager = manager,
         uapiCompatible = uapi,
