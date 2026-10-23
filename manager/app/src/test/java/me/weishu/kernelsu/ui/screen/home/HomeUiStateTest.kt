@@ -3,6 +3,7 @@ package me.weishu.kernelsu.ui.screen.home
 import me.weishu.kernelsu.KernelVersion
 import me.weishu.kernelsu.ui.util.RootShellStatus
 import me.weishu.kernelsu.ui.util.module.LatestVersionInfo
+import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
