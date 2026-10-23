@@ -32,7 +32,6 @@
     <string name="home_running_status">Состояние</string>
     <string name="home_state_on">Вкл.</string>
     <string name="home_working_version">Версия: %s</string>
-    <string name="home_lkm_update_available">Доступна новая версия встроенного LKM. Нажмите, чтобы обновить.</string>
     <string name="home_lkm_custom">Пользовательский</string>
     <string name="home_unsupported">Не поддерживается</string>
     <string name="home_unsupported_reason">Теперь KernelSU поддерживает только ядра GKI, однако вы всё ещё можете пропатчить образ для GKI-устройств.</string>
@@ -173,11 +172,7 @@
     <string name="allow_any_dynamic_manager_summary">Экспериментально. Показывать переключатель динамического менеджера для всех приложений, а не только для предустановленных подписей менеджера.</string>
     <string name="dynamic_manager_badge">DYNAMIC KSU</string>
     <string name="dynamic_manager_preset_badge">KSU</string>
-    <string name="require_manager_version">Требуется обновить менеджер.</string>
-    <string name="home_update_manager">Обновить менеджер</string>
     <string name="metric_unavailable">Недоступно</string>
-    <string name="require_kernel_version">Требуется обновить ядро. Нажмите, чтобы установить.</string>
-    <string name="require_kernel_version_gki">Требуется обновить ядро.</string>
     <string name="settings_umount_modules_default">Размонтировать модули по умолчанию</string>
     <string name="settings_umount_modules_default_summary">Глобальное значение по умолчанию для \"Размонтировать модули\" в App Profile. При включении будут удалены все модификации модулей в системе для приложений, у которых не задан Profile.</string>
     <string name="profile_umount_modules_summary">Включение этой опции позволит KernelSU восстанавливать любые изменённые модулями файлы для данного приложения.</string>

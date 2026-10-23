@@ -32,7 +32,6 @@
     <string name="home_running_status">Trạng thái hoạt động</string>
     <string name="home_state_on">Bật</string>
     <string name="home_working_version">Phiên bản: %s</string>
-    <string name="home_lkm_update_available">Hiện có phiên bản LKM tích hợp mới hơn. Nhấn để cập nhật.</string>
     <string name="home_lkm_custom">Tuỳ chỉnh</string>
     <string name="home_unsupported">Không được hỗ trợ!</string>
     <string name="home_unsupported_reason">KernelSU hiện tại chỉ hỗ trợ Kernel GKI, nhưng bạn có thể patch file .img của thiết bị GKI mà bạn cần.</string>
@@ -173,11 +172,7 @@
     <string name="allow_any_dynamic_manager_summary">Tính năng thử nghiệm. Hiển thị công tắc trình quản lý động cho mọi ứng dụng thay vì chỉ các chữ ký trình quản lý đặt trước.</string>
     <string name="dynamic_manager_badge">DYNAMIC KSU</string>
     <string name="dynamic_manager_preset_badge">KSU</string>
-    <string name="require_manager_version">Cần cập nhật Trình quản lý.</string>
-    <string name="home_update_manager">Cập nhật trình quản lý</string>
     <string name="metric_unavailable">Không khả dụng</string>
-    <string name="require_kernel_version">Cần cập nhật Kernel. Nhấn để cài đặt.</string>
-    <string name="require_kernel_version_gki">Cần cập nhật Kernel.</string>
     <string name="settings_umount_modules_default">Umount modules</string>
     <string name="settings_umount_modules_default_summary">Giá trị mặc định chung cho \"Umount modules\" trong Hồ sơ ứng dụng. Nếu được bật, mọi thay đổi hệ thống do các module gây ra sẽ bị gỡ bỏ khỏi hệ thống và các ứng dụng chưa thiết lập hồ sơ.</string>
     <string name="profile_umount_modules_summary">Bật tùy chọn này sẽ cho phép KernelSU khôi phục mọi file đã được các module sửa đổi trong ứng dụng này.</string>

@@ -32,7 +32,6 @@
     <string name="home_running_status">运转状态</string>
     <string name="home_state_on">已点亮</string>
     <string name="home_working_version">版本：%s</string>
-    <string name="home_lkm_update_available">内嵌 LKM 有新的星辉，点击更新</string>
     <string name="home_lkm_custom">自定义</string>
     <string name="home_unsupported">不支持</string>
     <string name="home_unsupported_reason">KernelSU 现在只支持 GKI 心之契约，但你可以为 GKI 法器补丁镜像</string>
@@ -173,11 +172,7 @@
     <string name="allow_any_dynamic_manager_summary">实验性魔法。为所有应用现出动态管理器开关，而不仅限于预置管理器印记。</string>
     <string name="dynamic_manager_badge">DYNAMIC KSU</string>
     <string name="dynamic_manager_preset_badge">KSU</string>
-    <string name="require_manager_version">需要更新管理器</string>
-    <string name="home_update_manager">更新管理器</string>
     <string name="metric_unavailable">不可用</string>
-    <string name="require_kernel_version">需要更新心之契约，点击此处结下</string>
-    <string name="require_kernel_version_gki">需要更新心之契约</string>
     <string name="settings_umount_modules_default">默认解除魔法阵</string>
     <string name="settings_umount_modules_default_summary">App Profile 中「解除魔法阵」的全域默认值；若点亮，将为未自定义 Profile 的应用剥除所有魔法阵对魔法界的改写</string>
     <string name="profile_umount_modules_summary">点亮该选项后，KernelSU 将为本应用还原被魔法阵改写过的文件</string>

@@ -39,29 +39,6 @@ internal fun HomeWarnings(
     // if (state.showGkiWarning) {
     //     WarningCard(stringResource(id = R.string.home_gki_warning), level = WarningLevel.Notice)
     // }
-    if (state.requiresNewKernel) {
-        WarningCard(
-            stringResource(
-                id = if (state.canInstallKernelUpdate) R.string.require_kernel_version else R.string.require_kernel_version_gki
-            ),
-            onClick = if (state.canInstallKernelUpdate) actions.onInstallClick else null
-        )
-    }
-    if (state.requiresNewManager) {
-        WarningCard(
-            stringResource(
-                id = R.string.require_manager_version
-            ),
-            onClick = actions::openManagerReleases,
-        )
-    }
-    if (state.showLkmUpdate) {
-        WarningCard(
-            message = stringResource(R.string.home_lkm_update_available),
-            level = WarningLevel.Notice,
-            onClick = actions.onInstallClick,
-        )
-    }
     if (state.showRootRecovering) {
         WarningCard(stringResource(id = R.string.root_recovering), level = WarningLevel.Notice)
     }

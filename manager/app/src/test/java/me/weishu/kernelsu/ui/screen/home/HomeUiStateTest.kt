@@ -3,7 +3,6 @@ package me.weishu.kernelsu.ui.screen.home
 import me.weishu.kernelsu.KernelVersion
 import me.weishu.kernelsu.ui.util.RootShellStatus
 import me.weishu.kernelsu.ui.util.module.LatestVersionInfo
-import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -37,8 +36,6 @@ class HomeUiStateTest {
         isManager = true,
         isManagerPrBuild = false,
         isKernelPrBuild = false,
-        requiresNewKernel = false,
-        requiresNewManager = false,
         isRootAvailable = rootStatus == RootShellStatus.Ready,
         rootStatus = rootStatus,
         isSafeMode = false,
@@ -55,59 +52,6 @@ class HomeUiStateTest {
             seccompStatus = 2,
         ),
     )
-
-    @Test
-    fun `bundled LKM version mismatch offers a kernel update`() {
-        val update = state(RootShellStatus.Ready).copy(currentManagerVersionCode = 32751)
-        assertTrue(update.showLkmUpdate)
-        assertTrue(update.showKernelUpdateAction)
-    }
-
-    @Test
-    fun `UAPI mismatch chooses the required component`() {
-        val ready = state(RootShellStatus.Ready)
-        val kernelUpdate = ready.copy(requiresNewKernel = true, kernelUAPIVersion = 4)
-        assertFalse(kernelUpdate.showLkmUpdate)
-        assertTrue(kernelUpdate.showKernelUpdateAction)
-        val managerUpdate = ready.copy(requiresNewManager = true, kernelUAPIVersion = 6)
-        assertFalse(managerUpdate.showLkmUpdate)
-        assertFalse(managerUpdate.showKernelUpdateAction)
-        assertFalse(kernelUpdate.copy(lkmMode = false).showKernelUpdateAction)
-    }
-
-    @Test
-    fun `matching versions and custom LKMs do not offer bundled updates`() {
-        val ready = state(RootShellStatus.Ready)
-        assertFalse(ready.showKernelUpdateAction)
-        val custom = ready.copy(isLkmBundled = false, currentManagerVersionCode = 32751)
-        assertFalse(custom.showLkmUpdate)
-        assertFalse(custom.showKernelUpdateAction)
-    }
-
-    @Test
-    fun `late load never offers boot image updates`() {
-        val lateLoad = state(RootShellStatus.Ready).copy(
-            isLateLoadMode = true,
-            currentManagerVersionCode = 32751,
-        )
-        assertFalse(lateLoad.canInstallKernelUpdate)
-        assertFalse(lateLoad.showLkmUpdate)
-        assertFalse(lateLoad.showKernelUpdateAction)
-        assertFalse(lateLoad.copy(requiresNewKernel = true).showKernelUpdateAction)
-    }
-
-    @Test
-    fun `manager update opens FinaSU releases without installing a kernel`() {
-        var openedUrl = ""
-        var installClicked = false
-        val actions = HomeActions(
-            onInstallClick = { installClicked = true },
-            onOpenUrl = { openedUrl = it },
-        )
-        actions.openManagerReleases()
-        assertEquals("https://github.com/LyraVoid/FinaSU/releases", openedUrl)
-        assertFalse(installClicked)
-    }
 
     @Test
     fun `probing shows recovering, never the failure card`() {

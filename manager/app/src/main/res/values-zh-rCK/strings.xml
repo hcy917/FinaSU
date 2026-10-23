@@ -32,7 +32,6 @@
     <string name="home_running_status">开张状态</string>
     <string name="home_state_on">已开火</string>
     <string name="home_working_version">版本：%s</string>
-    <string name="home_lkm_update_available">内嵌 LKM 有新版本，点一下换新</string>
     <string name="home_lkm_custom">自个儿配</string>
     <string name="home_unsupported">不认</string>
     <string name="home_unsupported_reason">KernelSU 眼下只认 GKI 秘酱料，不过 GKI 灶具的镜像还是能补的</string>
@@ -173,11 +172,7 @@
     <string name="allow_any_dynamic_manager_summary">试菜功能。每个应用都摆出流动掌柜开关，不光给预置招牌印开。</string>
     <string name="dynamic_manager_badge">DYNAMIC KSU</string>
     <string name="dynamic_manager_preset_badge">KSU</string>
-    <string name="require_manager_version">得换掌柜了</string>
-    <string name="home_update_manager">换新掌柜</string>
     <string name="metric_unavailable">用不了</string>
-    <string name="require_kernel_version">得换秘酱料，点这儿上灶</string>
-    <string name="require_kernel_version_gki">得换秘酱料</string>
     <string name="settings_umount_modules_default">照旧收起招牌菜</string>
     <string name="settings_umount_modules_default_summary">App Profile 里「收起招牌菜」的总开关；开了就给没单独设过的应用撤掉招牌菜对饭庄的改动</string>
     <string name="profile_umount_modules_summary">开了这项，KernelSU 就给这应用把招牌菜改过的菜谱还原回去</string>

@@ -32,7 +32,6 @@
     <string name="home_running_status">Stan działania</string>
     <string name="home_state_on">Włączony</string>
     <string name="home_working_version">Wersja: %s</string>
-    <string name="home_lkm_update_available">Dostępna jest nowsza wersja wbudowanego LKM. Kliknij, aby zaktualizować.</string>
     <string name="home_lkm_custom">Własny</string>
     <string name="home_unsupported">Nieobsługiwany</string>
     <string name="home_unsupported_reason">KernelSU obsługuje obecnie tylko jądra GKI.</string>
@@ -173,11 +172,7 @@
     <string name="allow_any_dynamic_manager_summary">Eksperymentalne. Pokazuj przełącznik menedżera dynamicznego dla każdej aplikacji, a nie tylko dla wstępnie ustawionych sygnatur menedżera.</string>
     <string name="dynamic_manager_badge">DYNAMIC KSU</string>
     <string name="dynamic_manager_preset_badge">KSU</string>
-    <string name="require_manager_version">Wymagana jest aktualizacja menedżera.</string>
-    <string name="home_update_manager">Zaktualizuj menedżera</string>
     <string name="metric_unavailable">Niedostępne</string>
-    <string name="require_kernel_version">Wymagana jest aktualizacja jądra. Kliknij, aby zainstalować.</string>
-    <string name="require_kernel_version_gki">Wymagana jest aktualizacja jądra.</string>
     <string name="settings_umount_modules_default">Domyślnie odmontowuj moduły</string>
     <string name="settings_umount_modules_default_summary">Globalna wartość domyślna opcji \"Odmontuj moduły\" w profilu aplikacji. Jeśli jest włączona, wycofuje wszystkie modyfikacje dokonane przez moduły dla aplikacji, które nie mają ustawionego profilu.</string>
     <string name="profile_umount_modules_summary">Włączenie tej opcji umożliwi KernelSU przywrócenie wszelkich zmodyfikowanych plików przez moduły dla tej aplikacji.</string>

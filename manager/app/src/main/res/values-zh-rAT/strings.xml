@@ -32,7 +32,6 @@
     <string name="home_running_status">运转状态</string>
     <string name="home_state_on">已唤醒</string>
     <string name="home_working_version">神恩等级：%s</string>
-    <string name="home_lkm_update_available">内嵌 LKM 有新神谕降临，点触更新</string>
     <string name="home_lkm_custom">自定义</string>
     <string name="home_unsupported">不蒙神恩</string>
     <string name="home_unsupported_reason">KernelSU 如今唯承 GKI 灵魂之力，然可为 GKI 圣器加持镜像。</string>
@@ -173,11 +172,7 @@
     <string name="allow_any_dynamic_manager_summary">试炼之术。为诸圣器现出动态管理器开关，不限预置之管理器签名。</string>
     <string name="dynamic_manager_badge">DYNAMIC KSU</string>
     <string name="dynamic_manager_preset_badge">KSU</string>
-    <string name="require_manager_version">管理器需更新神恩</string>
-    <string name="home_update_manager">更新管理器神恩</string>
     <string name="metric_unavailable">不可用</string>
-    <string name="require_kernel_version">灵魂之力需更新，点触此处蒙恩</string>
-    <string name="require_kernel_version_gki">灵魂之力需更新</string>
     <string name="settings_umount_modules_default">天意默认解除圣光阵</string>
     <string name="settings_umount_modules_default_summary">App Profile 中「解除圣光阵」之天意默认值；若唤醒，则未自定义 Profile 之圣器将被涤净诸圣光阵对圣域之改动</string>
     <string name="profile_umount_modules_summary">唤醒此术将允 KernelSU 为圣器归元被圣光阵改动之圣典</string>

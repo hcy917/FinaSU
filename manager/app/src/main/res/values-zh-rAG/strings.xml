@@ -32,7 +32,6 @@
     <string name="home_running_status">运行状态喵</string>
     <string name="home_state_on">开着呢喵</string>
     <string name="home_working_version">版本：%s 喵</string>
-    <string name="home_lkm_update_available">内嵌 LKM 有更新啦喵，戳一下就更它</string>
     <string name="home_lkm_custom">自定义喵</string>
     <string name="home_unsupported">不支持喵</string>
     <string name="home_unsupported_reason">KernelSU 现在只认 GKI 内核喵，不过人家能帮你给 GKI 设备打补丁镜像哒</string>
@@ -173,11 +172,7 @@
     <string name="allow_any_dynamic_manager_summary">实验性功能喵。给所有应用都显示动态管理器开关，不只限于预置的管理器签名哒</string>
     <string name="dynamic_manager_badge">DYNAMIC KSU</string>
     <string name="dynamic_manager_preset_badge">KSU</string>
-    <string name="require_manager_version">得更新管理器啦喵</string>
-    <string name="home_update_manager">更新管理器喵</string>
     <string name="metric_unavailable">不可用喵</string>
-    <string name="require_kernel_version">得更新内核啦，戳这里安装喵</string>
-    <string name="require_kernel_version_gki">得更新内核啦喵</string>
     <string name="settings_umount_modules_default">默认卸载模块喵</string>
     <string name="settings_umount_modules_default_summary">App Profile 里「卸载模块」的全局默认值喵；开了的话，没自定义 Profile 的应用就会被清掉所有模块对系统的改动哦</string>
     <string name="profile_umount_modules_summary">开了这个，KernelSU 就能帮应用把被模块改过的文件还原回来喵</string>

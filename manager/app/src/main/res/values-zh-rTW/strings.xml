@@ -32,7 +32,6 @@
     <string name="home_running_status">執行狀態</string>
     <string name="home_state_on">已開啟</string>
     <string name="home_working_version">版本：%s</string>
-    <string name="home_lkm_update_available">有可用的內建 LKM 更新，點選更新</string>
     <string name="home_lkm_custom">自訂</string>
     <string name="home_unsupported">未受支援</string>
     <string name="home_unsupported_reason">KernelSU 目前僅支援 GKI 核心</string>
@@ -173,11 +172,7 @@
     <string name="allow_any_dynamic_manager_summary">實驗性功能。為所有應用程式顯示動態管理器開關，而不僅限於預設管理器簽章。</string>
     <string name="dynamic_manager_badge">DYNAMIC KSU</string>
     <string name="dynamic_manager_preset_badge">KSU</string>
-    <string name="require_manager_version">需要更新管理工具</string>
-    <string name="home_update_manager">更新管理工具</string>
     <string name="metric_unavailable">無法使用</string>
-    <string name="require_kernel_version">需要更新核心，點選開始安裝</string>
-    <string name="require_kernel_version_gki">需要更新核心</string>
     <string name="settings_umount_modules_default">預設解除掛載模組功能</string>
     <string name="settings_umount_modules_default_summary">將 App Profile 的全域預設行為設作「解除掛載模組功能」。啟用後，將向未指派 Profile 的應用程式移除模組功能。</string>
     <string name="profile_umount_modules_summary">啟用選項後，KernelSU 會將應用程式內遭模組修改的檔案恢復原狀。</string>

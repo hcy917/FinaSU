@@ -32,7 +32,6 @@
     <string name="home_running_status">حالة التشغيل</string>
     <string name="home_state_on">مفعّل</string>
     <string name="home_working_version">الإصدار: %s</string>
-    <string name="home_lkm_update_available">يتوفر إصدار أحدث من LKM المضمّن. اضغط للتحديث.</string>
     <string name="home_lkm_custom">مُخصّص</string>
     <string name="home_unsupported">غير مدعوم</string>
     <string name="home_unsupported_reason">KernelSU يدعم GKI kernels فقط</string>
@@ -173,11 +172,7 @@
     <string name="allow_any_dynamic_manager_summary">تجريبي. إظهار خيار المدير الديناميكي لكل تطبيق بدلًا من تواقيع المدراء المعينة مسبقًا فقط.</string>
     <string name="dynamic_manager_badge">DYNAMIC KSU</string>
     <string name="dynamic_manager_preset_badge">KSU</string>
-    <string name="require_manager_version">يلزم تحديث المدير.</string>
-    <string name="home_update_manager">تحديث المدير</string>
     <string name="metric_unavailable">غير متاح</string>
-    <string name="require_kernel_version">يلزم تحديث النواة. اضغط للتثبيت.</string>
-    <string name="require_kernel_version_gki">يلزم تحديث النواة.</string>
     <string name="settings_umount_modules_default">الغاء تحميل الإضافات بشكل افتراضي</string>
     <string name="settings_umount_modules_default_summary">القيمة الافتراضية العامة لـ\"إلغاء تحميل الإضافات\" في ملفات تعريف التطبيقات. إذا تم تمكينه، إزالة جميع تعديلات الإضافات على النظام للتطبيقات التي لا تحتوي على مجموعة ملف تعريف.</string>
     <string name="profile_umount_modules_summary">سيسمح تمكين هذا الخيار لـKernelSU باستعادة أي ملفات معدلة بواسطة الإضافات لهذا التطبيق.</string>

@@ -152,8 +152,6 @@ private fun previewHomeScreenState(
     isManager = true,
     isManagerPrBuild = false,
     isKernelPrBuild = false,
-    requiresNewKernel = false,
-    requiresNewManager = false,
     isRootAvailable = ksuVersion != null,
     isSafeMode = isSafeMode,
     isLateLoadMode = isLateLoadMode,

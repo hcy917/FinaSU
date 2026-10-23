@@ -32,7 +32,6 @@
     <string name="home_running_status">Status berjalan</string>
     <string name="home_state_on">Aktif</string>
     <string name="home_working_version">Versi: %s</string>
-    <string name="home_lkm_update_available">Versi LKM bawaan yang lebih baru tersedia. Ketuk untuk memperbarui.</string>
     <string name="home_lkm_custom">Kustom</string>
     <string name="home_unsupported">Tidak didukung</string>
     <string name="home_unsupported_reason">KernelSU sekarang hanya mendukung kernel GKI, tetapi Anda dapat menambal image untuk perangkat GKI.</string>
@@ -173,11 +172,7 @@
     <string name="allow_any_dynamic_manager_summary">Eksperimental. Tampilkan sakelar manajer dinamis untuk setiap aplikasi, bukan hanya tanda tangan manajer yang telah ditetapkan.</string>
     <string name="dynamic_manager_badge">DYNAMIC KSU</string>
     <string name="dynamic_manager_preset_badge">KSU</string>
-    <string name="require_manager_version">Manajer perlu diperbarui</string>
-    <string name="home_update_manager">Perbarui manajer</string>
     <string name="metric_unavailable">Tidak tersedia</string>
-    <string name="require_kernel_version">Kernel perlu diperbarui. Ketuk untuk memasang.</string>
-    <string name="require_kernel_version_gki">Kernel perlu diperbarui</string>
     <string name="settings_umount_modules_default">Umount modul secara bawaan</string>
     <string name="settings_umount_modules_default_summary">Nilai bawaan global untuk \"Umount modul\" pada profil aplikasi. Jika diaktifkan, fitur ini akan menghapus semua modifikasi modul pada sistem untuk aplikasi yang tidak memiliki profil yang ditetapkan.</string>
     <string name="profile_umount_modules_summary">Mengaktifkan opsi ini akan memungkinkan KernelSU untuk memulihkan berkas apa pun yang telah dimodifikasi oleh modul untuk aplikasi ini</string>

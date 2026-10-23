@@ -32,7 +32,6 @@
     <string name="home_running_status">修炼状态</string>
     <string name="home_state_on">已启</string>
     <string name="home_working_version">篇次：%s</string>
-    <string name="home_lkm_update_available">内嵌 LKM 有新篇可用，点触更新。</string>
     <string name="home_lkm_custom">自定</string>
     <string name="home_unsupported">不支持</string>
     <string name="home_unsupported_reason">KernelSU 如今唯承 GKI 道核，然道友可为 GKI 仙器炼符补道。</string>
@@ -173,11 +172,7 @@
     <string name="allow_any_dynamic_manager_summary">试炼之法。为诸凡器现出动态仙使法门，不复限于预置之仙印。</string>
     <string name="dynamic_manager_badge">DYNAMIC KSU</string>
     <string name="dynamic_manager_preset_badge">KSU</string>
-    <string name="require_manager_version">需更新仙府辖器</string>
-    <string name="home_update_manager">更新辖器</string>
     <string name="metric_unavailable">不可用</string>
-    <string name="require_kernel_version">需更新道核，点触炼化。</string>
-    <string name="require_kernel_version_gki">需更新道核</string>
     <string name="settings_umount_modules_default">默认卸除仙符</string>
     <string name="settings_umount_modules_default_summary">App Profile 中「卸除仙符」之全域默认值。若启用，将令未设 Profile 之凡器复还诸仙符所改之天道文卷。</string>
     <string name="profile_umount_modules_summary">启此术，KernelSU 将为本器复还被仙符所改之文卷。</string>

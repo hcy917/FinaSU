@@ -34,8 +34,6 @@ data class HomeUiState(
     val isManager: Boolean,
     val isManagerPrBuild: Boolean,
     val isKernelPrBuild: Boolean,
-    val requiresNewKernel: Boolean,
-    val requiresNewManager: Boolean,
     val isRootAvailable: Boolean,
     val rootStatus: RootShellStatus = if (isRootAvailable) RootShellStatus.Ready else RootShellStatus.Unavailable,
     val isSafeMode: Boolean,
@@ -55,22 +53,6 @@ data class HomeUiState(
 
     val showGkiWarning: Boolean
         get() = ksuVersion != null && lkmMode == false
-
-    val showLkmUpdate: Boolean
-        get() = isManager &&
-                lkmMode == true &&
-                !isLateLoadMode &&
-                isLkmBundled &&
-                ksuVersion?.toLong() != currentManagerVersionCode &&
-                !requiresNewKernel &&
-                !requiresNewManager
-
-    // Jailbreak mode runs on locked bootloaders, so flashing a boot image would brick the device.
-    val canInstallKernelUpdate: Boolean
-        get() = lkmMode == true && !isLateLoadMode
-
-    val showKernelUpdateAction: Boolean
-        get() = canInstallKernelUpdate && (requiresNewKernel || showLkmUpdate)
 
     val showCustomLkmBadge: Boolean
         get() = lkmMode == true && !isLkmBundled
@@ -102,9 +84,7 @@ data class HomeActions(
     val onOpenModule: () -> Unit = {},
     val onRetryRoot: () -> Unit = {},
     val onSusfs: () -> Unit = {},
-) {
-    fun openManagerReleases() = onOpenUrl("https://github.com/LyraVoid/FinaSU/releases")
-}
+)
 
 /**
  * The provider that really ran this boot. The runtime record already reflects a NoMount

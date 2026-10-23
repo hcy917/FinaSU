@@ -32,7 +32,6 @@
     <string name="home_running_status">Estado de ejecución</string>
     <string name="home_state_on">Activado</string>
     <string name="home_working_version">Versión: %s</string>
-    <string name="home_lkm_update_available">Hay disponible un LKM incluido más reciente. Toca para actualizar.</string>
     <string name="home_lkm_custom">Personalizado</string>
     <string name="home_unsupported">Sin soporte</string>
     <string name="home_unsupported_reason">KernelSU solo admite kernels GKI ahora, pero puedes parchear la imagen para dispositivos GKI.</string>
@@ -173,11 +172,7 @@
     <string name="allow_any_dynamic_manager_summary">Experimental. Muestra el interruptor de gestor dinámico para todas las aplicaciones en lugar de solo las firmas de gestor predefinidas.</string>
     <string name="dynamic_manager_badge">DYNAMIC KSU</string>
     <string name="dynamic_manager_preset_badge">KSU</string>
-    <string name="require_manager_version">Se requiere actualizar el gestor.</string>
-    <string name="home_update_manager">Actualizar gestor</string>
     <string name="metric_unavailable">No disponible</string>
-    <string name="require_kernel_version">Se requiere actualizar el kernel. Toca para instalar.</string>
-    <string name="require_kernel_version_gki">Se requiere actualizar el kernel.</string>
     <string name="settings_umount_modules_default">Desmontar módulos por defecto</string>
     <string name="settings_umount_modules_default_summary">El valor global predeterminado para \"Umount modules\" en App Profile. Si está activado, eliminará todas las modificaciones de módulos del sistema para las apps que no tengan un perfil establecido.</string>
     <string name="profile_umount_modules_summary">Activar esta opción permitirá a KernelSU restaurar cualquier archivo modificado por los módulos para esta aplicación.</string>

@@ -173,24 +173,6 @@ private fun FocusStatusTile(
     }
 
     val cardAction: (@Composable () -> Unit)? = when {
-        state.requiresNewManager -> {
-            {
-                StatusInstallButton(
-                    onClick = actions::openManagerReleases,
-                    label = stringResource(R.string.home_update_manager),
-                )
-            }
-        }
-
-        state.showKernelUpdateAction -> {
-            {
-                StatusInstallButton(
-                    onClick = actions.onInstallClick,
-                    label = stringResource(R.string.module_update),
-                )
-            }
-        }
-
         jailbreak -> {
             { StatusJailbreakButton(onClick = actions.onJailbreakClick) }
         }
