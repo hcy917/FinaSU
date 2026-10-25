@@ -141,10 +141,6 @@ import me.weishu.kernelsu.ui.screen.home.LocalSupportLinksStyle
 import me.weishu.kernelsu.ui.screen.home.SupportLinksCustomContent
 import me.weishu.kernelsu.ui.screen.install.InstallScreen
 import me.weishu.kernelsu.ui.screen.module.ModulePager
-import me.weishu.kernelsu.ui.screen.plugin.PluginPager
-import me.weishu.kernelsu.ui.screen.modulerepo.ModuleRepoDetailScreen
-import me.weishu.kernelsu.ui.screen.modulerepo.ModuleRepoScreen
-import me.weishu.kernelsu.ui.screen.plugin.PluginStoreScreen
 import me.weishu.kernelsu.ui.component.settings.ProfileConfig
 import me.weishu.kernelsu.ui.screen.settings.CategorySettingsScreen
 import me.weishu.kernelsu.ui.screen.settings.LanguagePickerScreen
@@ -173,7 +169,6 @@ import me.weishu.kernelsu.ui.util.useFullFeaturedLayout
 import me.weishu.kernelsu.ui.viewmodel.MainActivityViewModel
 import me.weishu.kernelsu.ui.viewmodel.MainPagerConfig
 import me.weishu.kernelsu.ui.viewmodel.ModuleViewModel
-import me.weishu.kernelsu.ui.viewmodel.PluginViewModel
 import me.weishu.kernelsu.ui.viewmodel.SuperUserViewModel
 import me.weishu.kernelsu.wallpaper.LocalFolkWallpaperTokens
 import me.weishu.kernelsu.wallpaper.LocalWallpaperPage
@@ -249,13 +244,6 @@ open class MainActivity : FragmentActivity() {
             val selectedMainPage by viewModel.selectedMainPage.collectAsStateWithLifecycle()
             val appSettings = uiState.appSettings
             val darkMode = appSettings.colorMode.isDark || (appSettings.colorMode.isSystem && isSystemInDarkTheme())
-            androidx.compose.runtime.LaunchedEffect(Unit) {
-                kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
-                    me.weishu.kernelsu.data.sui.SuiPermissionHost.register(this@MainActivity)
-                }
-            }
-            me.weishu.kernelsu.ui.screen.sui.SuiPermissionRequestDialog()
-
             DisposableEffect(darkMode) {
                 enableEdgeToEdge(
                     statusBarStyle = SystemBarStyle.auto(
@@ -280,18 +268,6 @@ open class MainActivity : FragmentActivity() {
 
             val capability by CapabilityRepository.state.collectAsStateWithLifecycle()
             val authenticationSession = rememberAuthenticationSession(this@MainActivity, ksuApp.securityRepository)
-            // Deterministic entry for verification: am start ... --es route sui_permissions
-            val requestedRoute = intent.getStringExtra("route")
-            val fakeRequest = intent.getStringExtra("fake_request")
-            androidx.compose.runtime.LaunchedEffect(requestedRoute) {
-                if (requestedRoute == "sui_permissions") {
-                    navigator.push(Route.SuiPermissions)
-                }
-                if (fakeRequest != null) {
-                    me.weishu.kernelsu.data.sui.SuiPermissionHost.fake(fakeRequest)
-                }
-            }
-
             CompositionLocalProvider(
                 LocalNavigator provides navigator,
                 LocalNavOriginState provides navOriginState,
@@ -370,28 +346,10 @@ open class MainActivity : FragmentActivity() {
                                 entry<Route.About> { AboutScreen() }
                                 entry<Route.Sulog> { SulogScreen() }
                                 entry<Route.Susfs> { me.weishu.kernelsu.ui.screen.SusfsScreen() }
-                                entry<Route.UtsView> {
-                                    me.weishu.kernelsu.ui.screen.uts.UtsViewScreen()
-                                }
-                                entry<Route.Nomount> {
-                                    me.weishu.kernelsu.ui.screen.nomount.NomountScreen()
-                                }
-                                entry<Route.SuiPermissions> {
-                                    me.weishu.kernelsu.ui.screen.sui.SuiPermissionsScreen()
-                                }
-                                entry<Route.NomountExclusions> {
-                                    me.weishu.kernelsu.ui.screen.nomount.NomountExclusionsScreen()
-                                }
                                 entry<Route.ColorPalette> { ColorPaletteScreen() }
                                 entry<Route.AppProfileTemplate> { AppProfileTemplateScreen() }
                                 entry<Route.TemplateEditor> { key -> TemplateEditorScreen(key.template, key.readOnly) }
                                 entry<Route.AppProfile> { key -> AppProfileScreen(key.uid) }
-                                entry<Route.ModuleRepo> { ModuleRepoScreen() }
-                                entry<Route.ModuleRepoDetail> { key -> ModuleRepoDetailScreen(key.module) }
-                                entry<Route.KernelModules> {
-                                    me.weishu.kernelsu.ui.screen.kernelmodule.KernelModuleScreen()
-                                }
-                                entry<Route.PluginStore> { PluginStoreScreen() }
                                 entry<Route.Install> { InstallScreen() }
                                 entry<Route.Flash> { key ->
                                     FlashScreen(
@@ -602,12 +560,6 @@ fun MainScreen(
     val badgeEnabled = enableNavigationBadge && isFullFeatured
     val moduleViewModel = viewModel<ModuleViewModel>()
     val moduleUiState by moduleViewModel.uiState.collectAsStateWithLifecycle()
-    val pluginViewModel = viewModel<PluginViewModel>()
-
-    LaunchedEffect(isFullFeatured) {
-        if (isFullFeatured) pluginViewModel.ensureLoaded()
-    }
-
     val superUserViewModel = viewModel<SuperUserViewModel>()
     val grantedUidCount by remember(superUserViewModel) {
         superUserViewModel.uiState
@@ -649,11 +601,6 @@ fun MainScreen(
     }
 
     val moduleEnabledCount = moduleUiState.modules.count { it.enabled }
-    val pluginEnabledCount by remember(pluginViewModel) {
-        pluginViewModel.uiState
-            .map { state -> state.plugins.count { it.enabled } }
-            .distinctUntilChanged()
-    }.collectAsStateWithLifecycle(0)
     val homeMetamodule = remember(moduleUiState.modules) {
         moduleUiState.modules.firstOrNull { it.metamodule && !it.remove }?.let { module ->
             HomeMetamodule(
@@ -667,7 +614,6 @@ fun MainScreen(
     val navigationBadge = if (badgeEnabled) {
         NavigationBadgeState(
             superuserCount = superuserCount,
-            pluginEnabledCount = pluginEnabledCount,
             moduleEnabledCount = moduleEnabledCount,
             moduleUpdatableCount = moduleUiState.updateInfo.count { it.value.downloadUrl.isNotBlank() },
         )
@@ -736,8 +682,7 @@ fun MainScreen(
                 ) { page ->
                     val isCurrentPage = page == settledPage
                     when (destinations.getOrNull(page)) {
-                        BottomBarDestination.Home -> if (renderPagerPages || isCurrentPage) HomePager(navController, bottomInnerPadding, isCurrentPage, superuserCount, moduleEnabledCount, pluginEnabledCount, homeMetamodule)
-                        BottomBarDestination.Plugin -> if (renderPagerPages || isCurrentPage) PluginPager(bottomInnerPadding, isCurrentPage)
+                        BottomBarDestination.Home -> if (renderPagerPages || isCurrentPage) HomePager(navController, bottomInnerPadding, isCurrentPage, superuserCount, moduleEnabledCount, homeMetamodule)
                         BottomBarDestination.SuperUser -> if (renderPagerPages || isCurrentPage) SuperUserPager(navController, bottomInnerPadding, isCurrentPage)
                         BottomBarDestination.Module -> if (renderPagerPages || isCurrentPage) ModulePager(bottomInnerPadding, isCurrentPage)
                         BottomBarDestination.Setting -> if (renderPagerPages || isCurrentPage) SettingPager(navController, bottomInnerPadding, isCurrentPage)

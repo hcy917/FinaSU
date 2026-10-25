@@ -125,7 +125,6 @@ fun rememberMainPagerState(
 @Immutable
 data class NavigationBadgeState(
     val superuserCount: Int = 0,
-    val pluginEnabledCount: Int = 0,
     val moduleEnabledCount: Int = 0,
     val moduleUpdatableCount: Int = 0,
 )
@@ -141,7 +140,6 @@ enum class BottomBarDestination(
     val themeKey: String,
 ) {
     Home(R.string.home, Icons.Filled.Home, Icons.Outlined.Home, "Home"),
-    Plugin(R.string.plugin, Icons.Filled.Widgets, Icons.Outlined.Widgets, "KModule"),
     SuperUser(R.string.superuser, Icons.Filled.Shield, Icons.Outlined.Shield, "SuperUser"),
     Module(R.string.module, Icons.Filled.Extension, Icons.Outlined.Extension, "AModule"),
     Setting(R.string.settings, Icons.Filled.Settings, Icons.Outlined.Settings, "Settings")
@@ -155,9 +153,6 @@ internal data class NavBadge(val count: Int, val tone: BadgeTone)
 internal fun badgeFor(destination: BottomBarDestination, state: NavigationBadgeState): NavBadge? = when (destination) {
     BottomBarDestination.SuperUser ->
         state.superuserCount.takeIf { it > 0 }?.let { NavBadge(it, BadgeTone.Accent) }
-
-    BottomBarDestination.Plugin ->
-        state.pluginEnabledCount.takeIf { it > 0 }?.let { NavBadge(it, BadgeTone.Accent) }
 
     BottomBarDestination.Module -> when {
         state.moduleUpdatableCount > 0 -> NavBadge(state.moduleUpdatableCount, BadgeTone.Alert)

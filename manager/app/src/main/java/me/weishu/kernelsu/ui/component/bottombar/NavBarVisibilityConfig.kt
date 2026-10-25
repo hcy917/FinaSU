@@ -28,13 +28,11 @@ object NavBarVisibilityConfig {
 
     /** The destinations the user may hide, in bar order. */
     val hideable: List<BottomBarDestination> = listOf(
-        BottomBarDestination.Plugin,
         BottomBarDestination.SuperUser,
         BottomBarDestination.Module,
     )
 
     fun isVisible(destination: BottomBarDestination): Boolean = when (destination) {
-        BottomBarDestination.Plugin -> prefs.getBoolean(KEY_PLUGIN, true)
         BottomBarDestination.SuperUser -> prefs.getBoolean(KEY_SUPERUSER, true)
         BottomBarDestination.Module -> prefs.getBoolean(KEY_MODULE, true)
         else -> true
@@ -52,7 +50,6 @@ object NavBarVisibilityConfig {
         BottomBarDestination.entries.filter { isVisible(it) }
 
     private fun keyFor(destination: BottomBarDestination): String? = when (destination) {
-        BottomBarDestination.Plugin -> KEY_PLUGIN
         BottomBarDestination.SuperUser -> KEY_SUPERUSER
         BottomBarDestination.Module -> KEY_MODULE
         else -> null

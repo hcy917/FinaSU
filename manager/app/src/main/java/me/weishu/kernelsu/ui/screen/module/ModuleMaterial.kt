@@ -296,76 +296,7 @@ fun ModulePagerMaterial(
                 onSearchTextChange = actions.onSearchTextChange,
                 onClearClick = actions.onClearSearch,
                 snackbarHostState = snackBarHost,
-                navigationIcon = {
-                    val originState = LocalNavOriginState.current
-                    val density = LocalDensity.current
-                    val view = LocalView.current
-                    val originColorScheme = MaterialTheme.colorScheme
-                    val originColor = originColorScheme.surfaceContainer
-                    val originThemeSignature = navThemeSignature(originColorScheme)
-                    var originBounds by remember { mutableStateOf(Rect.Zero) }
-                    FolkIconButton(
-                        onClick = {
-                            val bounds = if (originBounds != Rect.Zero) {
-                                originBounds
-                            } else {
-                                with(density) { Rect(24.dp.toPx(), 140.dp.toPx(), 144.dp.toPx(), 260.dp.toPx()) }
-                            }
-                            originState.recordOrigin(
-                                captureNavOrigin(
-                                    view = view,
-                                    rect = bounds,
-                                    cornerRadius = with(density) { 20.dp.toPx() },
-                                    color = originColor,
-                                    themeSignature = originThemeSignature,
-                                    originId = "module-store",
-                                ),
-                            )
-                            actions.onOpenRepo()
-                        },
-                        modifier = Modifier
-                            .onGloballyPositioned { originBounds = it.boundsInRoot() },
-                    ) {
-                        Icon(
-                            imageVector = Icons.Outlined.Cloud,
-                            contentDescription = stringResource(id = R.string.module_repos)
-                        )
-                    }
-                },
                 actions = {
-                    val scope = rememberCoroutineScope()
-                    Box(
-                        modifier = Modifier
-                            .size(48.dp)
-                            .clip(androidx.compose.foundation.shape.CircleShape)
-                            .combinedClickable(
-                                interactionSource = remember { MutableInteractionSource() },
-                                indication = LocalIndication.current,
-                                onClickLabel = stringResource(R.string.kernel_modules_entry),
-                                onLongClickLabel = stringResource(R.string.kernel_modules_entry_hint),
-                                onLongClick = {
-                                    haptic.performHapticFeedback(HapticFeedbackType.LongPress)
-                                    scope.launch {
-                                        snackBarHost.showSnackbar(
-                                            resource.getString(R.string.kernel_modules_entry_long_press)
-                                        )
-                                    }
-                                },
-                                onClick = {
-                                    haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                                    actions.onOpenKernelModules()
-                                },
-                            )
-                            .semantics {
-                                this.contentDescription = resource.getString(R.string.kernel_modules_entry)
-                            },
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Icon(
-                            imageVector = Icons.Outlined.Memory,
-                            contentDescription = null,
-                        )
-                    }
                     FolkIconButton(
                         onClick = { showSortSheet = true }
                     ) {

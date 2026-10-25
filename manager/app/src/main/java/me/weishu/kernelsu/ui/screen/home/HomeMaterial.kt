@@ -22,6 +22,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -46,7 +47,6 @@ fun HomePagerMaterial(
     bottomInnerPadding: Dp,
     superuserCount: Int = 0,
     moduleEnabledCount: Int = 0,
-    pluginEnabledCount: Int = 0,
     metrics: HomeMetrics = HomeMetrics(),
 ) {
     ExpressiveScaffold(
@@ -88,7 +88,6 @@ fun HomePagerMaterial(
                     actions = actions,
                     superuserCount = superuserCount,
                     moduleEnabledCount = moduleEnabledCount,
-                    pluginEnabledCount = pluginEnabledCount,
                     metrics = metrics,
                 )
 

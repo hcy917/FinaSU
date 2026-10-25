@@ -74,8 +74,6 @@ data class ModuleActions(
     val onRequestUninstallConfirmation: (Module) -> Unit,
     val onDismissConfirmRequest: () -> Unit,
     val onConfirmUpdate: (ModuleConfirmRequest.Update) -> Unit,
-    val onOpenRepo: () -> Unit,
-    val onOpenKernelModules: () -> Unit,
     val onSetSortGroup: (ModuleSortGroup, Boolean) -> Unit,
     val onSetSortEnabledFirst: (Boolean) -> Unit,
     val onSetCustomOrder: (List<String>) -> Unit,

@@ -5,9 +5,7 @@ import androidx.navigation3.runtime.NavKey
 import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.Serializable
 import me.weishu.kernelsu.ui.screen.flash.FlashIt
-import me.weishu.kernelsu.ui.screen.modulerepo.StoreModuleArg
 import me.weishu.kernelsu.ui.util.FlashItSerializer
-import me.weishu.kernelsu.ui.util.StoreModuleArgSerializer
 import me.weishu.kernelsu.ui.util.TemplateInfoSerializer
 import me.weishu.kernelsu.ui.viewmodel.TemplateViewModel
 
@@ -36,22 +34,6 @@ sealed interface Route : NavKey, Parcelable {
     @Parcelize
     @Serializable
     data object Susfs : Route
-
-    @Parcelize
-    @Serializable
-    data object UtsView : Route
-
-    @Parcelize
-    @Serializable
-    data object Nomount : Route
-
-    @Parcelize
-    @Serializable
-    data object SuiPermissions : Route
-
-    @Parcelize
-    @Serializable
-    data object NomountExclusions : Route
 
     @Parcelize
     @Serializable
@@ -115,22 +97,6 @@ sealed interface Route : NavKey, Parcelable {
     @Parcelize
     @Serializable
     data object Install : Route
-
-    @Parcelize
-    @Serializable
-    data class ModuleRepoDetail(@Serializable(with = StoreModuleArgSerializer::class) val module: StoreModuleArg) : Route
-
-    @Parcelize
-    @Serializable
-    data object ModuleRepo : Route
-
-    @Parcelize
-    @Serializable
-    data object KernelModules : Route
-
-    @Parcelize
-    @Serializable
-    data object PluginStore : Route
 
     @Parcelize
     @Serializable

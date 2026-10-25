@@ -50,7 +50,6 @@ internal fun StatsHomeContent(
     actions: HomeActions,
     superuserCount: Int,
     moduleEnabledCount: Int,
-    pluginEnabledCount: Int,
     metrics: HomeMetrics,
 ) {
     if (isWideLayout(withOrientation = false)) {
@@ -72,7 +71,6 @@ internal fun StatsHomeContent(
                 StatsModuleTile(
                     superuserCount = superuserCount,
                     moduleEnabledCount = moduleEnabledCount,
-                    pluginEnabledCount = pluginEnabledCount,
                 )
                 HomeFactsTile(
                     state = state,
@@ -91,7 +89,6 @@ internal fun StatsHomeContent(
         StatsModuleTile(
             superuserCount = superuserCount,
             moduleEnabledCount = moduleEnabledCount,
-            pluginEnabledCount = pluginEnabledCount,
         )
         HomeFactsTile(
             state = state,
@@ -193,18 +190,15 @@ private fun StatsMonitorTile(
 private fun StatsModuleTile(
     superuserCount: Int,
     moduleEnabledCount: Int,
-    pluginEnabledCount: Int,
     modifier: Modifier = Modifier,
 ) {
     val colors = MaterialTheme.colorScheme
     val moduleLabel = stringResource(R.string.module)
     val superuserLabel = stringResource(R.string.superuser)
-    val pluginLabel = stringResource(R.string.plugin)
-    val slices = remember(moduleEnabledCount, superuserCount, pluginEnabledCount, colors) {
+    val slices = remember(moduleEnabledCount, superuserCount, colors) {
         listOf(
             PieSlice(value = moduleEnabledCount, color = colors.primary),
             PieSlice(value = superuserCount, color = colors.tertiary),
-            PieSlice(value = pluginEnabledCount, color = colors.secondary),
         )
     }
 
@@ -222,7 +216,7 @@ private fun StatsModuleTile(
         ) {
             ModulePieChart(
                 slices = slices,
-                centerLabel = (superuserCount + moduleEnabledCount + pluginEnabledCount).toString(),
+                centerLabel = (superuserCount + moduleEnabledCount).toString(),
                 modifier = Modifier.size(140.dp),
             )
             Column(
@@ -231,7 +225,6 @@ private fun StatsModuleTile(
             ) {
                 ChartLegend(label = moduleLabel, count = moduleEnabledCount, color = colors.primary)
                 ChartLegend(label = superuserLabel, count = superuserCount, color = colors.tertiary)
-                ChartLegend(label = pluginLabel, count = pluginEnabledCount, color = colors.secondary)
             }
         }
     }

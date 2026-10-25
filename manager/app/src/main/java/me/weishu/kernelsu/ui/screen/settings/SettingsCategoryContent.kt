@@ -60,7 +60,6 @@ import me.weishu.kernelsu.ui.component.material.SegmentedColumn
 import me.weishu.kernelsu.ui.component.material.SegmentedDropdownItem
 import me.weishu.kernelsu.ui.component.material.SegmentedListItem
 import me.weishu.kernelsu.ui.component.material.SegmentedSwitchItem
-import me.weishu.kernelsu.ui.screen.nomount.nomountUnavailableReason
 import me.weishu.kernelsu.ui.component.profile.dialogs.SingleSelectDialog
 import me.weishu.kernelsu.ui.util.LauncherIconUtils
 
@@ -644,9 +643,6 @@ fun FunctionCategoryContent(uiState: SettingsUiState, actions: SettingsScreenAct
                     FolkZygiskStatusItem(uiState, actions)
                 },
                 {
-                    SuiStatusItem(uiState, actions)
-                },
-                {
                     val folkMountStatus = uiState.folkMountStatus
                     val available = folkMountStatus != null && !uiState.folkMountReadError
                     val mode = folkMountStatus?.configuredMode
@@ -726,54 +722,6 @@ fun FunctionCategoryContent(uiState: SettingsUiState, actions: SettingsScreenAct
                         }
                     )
                 },
-                {
-                    // NoMount is its own page: the row only reports the driver
-                    // and injection state, never a success it did not observe.
-                    val nomount = uiState.nomountStatus
-                    val nomountSummary = when {
-                        uiState.isNomountLoading -> stringResource(R.string.nomount_loading)
-                        uiState.nomountReadError -> stringResource(R.string.nomount_read_error)
-                        nomount == null -> stringResource(R.string.nomount_loading)
-                        // Say why it is unusable and what to do, not just that it is.
-                        !nomount.apiOk -> nomountUnavailableReason(nomount) ?: stringResource(
-                            id = R.string.nomount_driver_unavailable,
-                            stringResource(
-                                id = when (nomount.driverState) {
-                                    NomountDriverState.ABSENT -> R.string.nomount_driver_absent
-                                    NomountDriverState.OUTDATED -> R.string.nomount_driver_outdated
-                                    NomountDriverState.READY -> R.string.nomount_driver_ready
-                                }
-                            )
-                        )
-                        else -> stringResource(
-                            id = R.string.nomount_rules_value,
-                            nomount.rulesApplied,
-                            nomount.rulesExpected,
-                        )
-                    }
-                    SegmentedListItem(
-                        headlineContent = { Text(stringResource(id = R.string.settings_nomount)) },
-                        supportingContent = { Text(nomountSummary) },
-                        leadingContent = { Icon(Icons.Filled.Layers, null) },
-                        onClick = actions.onOpenNomount,
-                        trailingContent = {
-                            Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null)
-                        },
-                    )
-                },
-                {
-                    // UTS View has enough configuration that a switch in the
-                    // settings list would misrepresent it as a single toggle.
-                    SegmentedListItem(
-                        headlineContent = { Text(stringResource(id = R.string.settings_uts_view)) },
-                        supportingContent = { Text(stringResource(id = R.string.settings_uts_view_summary)) },
-                        leadingContent = { Icon(Icons.Rounded.TextFields, null) },
-                        onClick = actions.onOpenUtsView,
-                        trailingContent = {
-                            Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null)
-                        },
-                    )
-                }
             )
         )
     }
