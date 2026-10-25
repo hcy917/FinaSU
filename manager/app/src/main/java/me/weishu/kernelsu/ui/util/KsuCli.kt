@@ -26,6 +26,7 @@ import me.weishu.kernelsu.core.tasks.ExtractImage
 import me.weishu.kernelsu.core.tasks.ProbeResult
 import me.weishu.kernelsu.core.utils.DataSourceChannel
 import me.weishu.kernelsu.ksuApp
+import me.weishu.kernelsu.data.repository.ModuleFileSystem
 import me.weishu.kernelsu.data.modulestore.VerifiedDownloads
 import me.weishu.kernelsu.data.modulestore.copyForInstall
 import okhttp3.OkHttpClient
@@ -323,16 +324,12 @@ fun toggleModule(id: String, enable: Boolean): Boolean {
     return result
 }
 
-fun mutateModuleActivation(
+suspend fun mutateModuleActivation(
     id: String,
-    undoUninstall: Boolean = false,
     enable: Boolean = true,
 ): Boolean {
-    val action = if (undoUninstall) "undo-uninstall" else if (enable) "enable" else "disable"
-    val quotedId = "'" + id.replace("'", "'\"'\"'") + "'"
-    val cmd = "module $action $quotedId"
-    val result = execKsud(cmd, true)
-    Log.i(TAG, "$cmd result: $result")
+    val result = ModuleFileSystem.setEnabled(id, enable)
+    Log.i(TAG, "module ${if (enable) "enable" else "disable"} $id result: $result")
     return result
 }
 

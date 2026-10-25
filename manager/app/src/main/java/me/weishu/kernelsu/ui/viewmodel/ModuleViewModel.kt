@@ -455,7 +455,7 @@ class ModuleViewModel(
         viewModelScope.launch {
             val res = ksuApp.resources
             val success = withContext(Dispatchers.IO) {
-                mutateModuleActivation(module.id, undoUninstall = true)
+                me.weishu.kernelsu.ui.util.undoUninstallModule(module.id)
             }
             if (success) {
                 fetchModuleList(checkUpdate = true, resort = false)
