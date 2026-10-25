@@ -10,7 +10,6 @@
     <string name="install_anykernel_read_failed">無法讀取 AnyKernel3 ZIP。</string>
     <string name="home">首頁</string>
     <string name="home_not_installed">尚未安裝</string>
-    <string name="home_click_to_install">點選開始安裝</string>
     <string name="home_working">已開始運作</string>
     <string name="home_tile_status">KernelSU</string>
     <string name="home_tile_manager">FinaSU</string>

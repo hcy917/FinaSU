@@ -10,7 +10,6 @@
     <string name="install_anykernel_read_failed">无法读取 AnyKernel3 ZIP。</string>
     <string name="home">仙府主殿</string>
     <string name="home_not_installed">未入仙门</string>
-    <string name="home_click_to_install">点触引仙入道</string>
     <string name="home_working">闭关修炼中</string>
     <string name="home_tile_status">KernelSU</string>
     <string name="home_tile_manager">FinaSU</string>

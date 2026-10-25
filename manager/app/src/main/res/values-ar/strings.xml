@@ -10,7 +10,6 @@
     <string name="install_anykernel_read_failed">تعذّر قراءة ملف AnyKernel3 ZIP.</string>
     <string name="home">الرئيسية</string>
     <string name="home_not_installed">غير مثبت</string>
-    <string name="home_click_to_install">إضغط للتثبيت</string>
     <string name="home_working">يعمل</string>
     <string name="home_tile_status">KernelSU</string>
     <string name="home_tile_manager">FinaSU</string>

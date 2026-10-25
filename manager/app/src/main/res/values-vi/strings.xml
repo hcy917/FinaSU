@@ -10,7 +10,6 @@
     <string name="install_anykernel_read_failed">Không thể đọc file ZIP AnyKernel3.</string>
     <string name="home">Trang chủ</string>
     <string name="home_not_installed">Chưa cài đặt</string>
-    <string name="home_click_to_install">Nhấn để cài đặt</string>
     <string name="home_working">Đang hoạt động</string>
     <string name="home_tile_status">KernelSU</string>
     <string name="home_tile_manager">FinaSU</string>

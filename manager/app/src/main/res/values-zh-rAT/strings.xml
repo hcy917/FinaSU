@@ -10,7 +10,6 @@
     <string name="install_anykernel_read_failed">无法读取 AnyKernel3 圣匣。</string>
     <string name="home">圣光之殿</string>
     <string name="home_not_installed">未蒙神恩</string>
-    <string name="home_click_to_install">点触蒙恩</string>
     <string name="home_working">圣光运转中</string>
     <string name="home_tile_status">KernelSU</string>
     <string name="home_tile_manager">FinaSU</string>

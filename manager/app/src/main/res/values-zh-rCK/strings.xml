@@ -10,7 +10,6 @@
     <string name="install_anykernel_read_failed">这 AnyKernel3 ZIP 读不出来。</string>
     <string name="home">后厨操作台</string>
     <string name="home_not_installed">还没上灶</string>
-    <string name="home_click_to_install">点一下上灶</string>
     <string name="home_working">灶上忙着</string>
     <string name="home_tile_status">KernelSU</string>
     <string name="home_tile_manager">FinaSU</string>

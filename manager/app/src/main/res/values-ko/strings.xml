@@ -10,7 +10,6 @@
     <string name="install_anykernel_read_failed">AnyKernel3 ZIP을 읽을 수 없습니다.</string>
     <string name="home">홈</string>
     <string name="home_not_installed">설치되지 않음</string>
-    <string name="home_click_to_install">이 곳을 눌러 설치하기</string>
     <string name="home_working">작동 중</string>
     <string name="home_tile_status">KernelSU</string>
     <string name="home_tile_manager">FinaSU</string>

@@ -10,7 +10,6 @@
     <string name="install_anykernel_read_failed">读不了这个 AnyKernel3 ZIP 喵…</string>
     <string name="home">主页</string>
     <string name="home_not_installed">还没装喵！</string>
-    <string name="home_click_to_install">戳一下就能装喵！</string>
     <string name="home_working">正在干活喵！</string>
     <string name="home_tile_status">KernelSU</string>
     <string name="home_tile_manager">FinaSU</string>

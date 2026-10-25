@@ -10,7 +10,6 @@
     <string name="install_anykernel_read_failed">无法读取 AnyKernel3 ZIP。</string>
     <string name="home">主世界</string>
     <string name="home_not_installed">未合成</string>
-    <string name="home_click_to_install">点击合成</string>
     <string name="home_working">联机中</string>
     <string name="home_tile_status">KernelSU</string>
     <string name="home_tile_manager">FinaSU</string>

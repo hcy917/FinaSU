@@ -10,7 +10,6 @@
     <string name="install_anykernel_read_failed">AnyKernel3 ZIP okunamadı.</string>
     <string name="home">Ana Sayfa</string>
     <string name="home_not_installed">Kurulmadı</string>
-    <string name="home_click_to_install">Yüklemek için dokunun</string>
     <string name="home_working">Çalışıyor</string>
     <string name="home_tile_status">KernelSU</string>
     <string name="home_tile_manager">FinaSU</string>
