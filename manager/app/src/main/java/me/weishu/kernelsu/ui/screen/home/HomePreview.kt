@@ -24,14 +24,14 @@ import me.weishu.kernelsu.KernelVersion
 private fun StatusCardActivatedPreview() {
     StatusCard(
         state = previewHomeScreenState(ksuVersion = 12345, lkmMode = true),
-        actions = HomeActions({}, {})
+        actions = HomeActions(onOpenUrl = {})
     )
 }
 
 @Preview(name = "Not Activated")
 @Composable
 private fun StatusCardNotActivatedPreview() {
-    StatusCard(state = previewHomeScreenState(ksuVersion = null, lkmMode = null), actions = HomeActions({}, {}))
+    StatusCard(state = previewHomeScreenState(ksuVersion = null, lkmMode = null), actions = HomeActions(onOpenUrl = {}))
 }
 
 @Preview(name = "Permissive")
@@ -39,7 +39,7 @@ private fun StatusCardNotActivatedPreview() {
 private fun StatusCardPermissivePreview() {
     StatusCard(
         state = previewHomeScreenState(ksuVersion = null, lkmMode = null, selinuxStatus = "Permissive"),
-        actions = HomeActions({}, {})
+        actions = HomeActions(onOpenUrl = {})
     )
 }
 
@@ -48,7 +48,7 @@ private fun StatusCardPermissivePreview() {
 private fun StatusCardJailbreakPreview() {
     StatusCard(
         state = previewHomeScreenState(ksuVersion = 12345, lkmMode = true, isLateLoadMode = true),
-        actions = HomeActions({}, {})
+        actions = HomeActions(onOpenUrl = {})
     )
 }
 
@@ -78,7 +78,7 @@ private fun HomeScreenPreviewContent(
             modifier = Modifier.padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            val actions = HomeActions({}, {})
+            val actions = HomeActions(onOpenUrl = {})
             StatusCard(
                 state = previewHomeScreenState(
                     ksuVersion = ksuVersion,

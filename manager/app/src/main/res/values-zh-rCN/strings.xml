@@ -10,8 +10,13 @@
     <string name="install_anykernel_read_failed">无法读取 AnyKernel3 ZIP。</string>
     <string name="home">主页</string>
     <string name="home_not_installed">未安装</string>
-    <string name="home_click_to_install">点击安装</string>
+    <string name="home_not_connected">内核模块未加载。本管理器只负责管理已安装的 FinaSU。</string>
     <string name="home_working">工作中</string>
+    <string name="home_signature_title">签名信息</string>
+    <string name="home_signature_size">区块大小</string>
+    <string name="home_signature_hash">SHA-256</string>
+    <string name="home_signature_copy_hint">长按复制区块大小与哈希</string>
+    <string name="home_signature_copied">已复制签名信息</string>
     <string name="home_tile_status">KernelSU</string>
     <string name="home_tile_manager">FinaSU</string>
     <string name="home_tile_system">系统信息</string>

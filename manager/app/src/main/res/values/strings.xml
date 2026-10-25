@@ -10,8 +10,13 @@
     <string name="install_anykernel_read_failed">Unable to read the AnyKernel3 ZIP.</string>
     <string name="home">Home</string>
     <string name="home_not_installed">Not installed</string>
-    <string name="home_click_to_install">Tap to install</string>
+    <string name="home_not_connected">Kernel module is not loaded. This manager only manages an installed FinaSU.</string>
     <string name="home_working">Working</string>
+    <string name="home_signature_title">Signing certificate</string>
+    <string name="home_signature_size">Block size</string>
+    <string name="home_signature_hash">SHA-256</string>
+    <string name="home_signature_copy_hint">Long-press to copy the size and hash</string>
+    <string name="home_signature_copied">Signing certificate copied</string>
     <string name="home_tile_status">KernelSU</string>
     <string name="home_tile_manager">FinaSU</string>
     <string name="home_tile_system">System info</string>

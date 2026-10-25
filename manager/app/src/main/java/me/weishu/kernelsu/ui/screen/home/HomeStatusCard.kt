@@ -11,8 +11,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Block
 import androidx.compose.material.icons.rounded.CheckCircle
 import androidx.compose.material.icons.rounded.Warning
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -25,7 +23,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import me.weishu.kernelsu.R
-import me.weishu.kernelsu.ui.component.material.FolkButton
 import me.weishu.kernelsu.ui.component.material.LocalWallpaperSupportingColor
 import me.weishu.kernelsu.ui.component.statustag.StatusTag
 import me.weishu.kernelsu.ui.theme.FolkType
@@ -52,41 +49,6 @@ internal fun statusStateTexts(state: HomeUiState): List<Pair<String, String>> {
         if (state.showCustomLkmBadge) {
             add(stringResource(R.string.home_lkm_custom) to stringResource(R.string.home_state_on))
         }
-    }
-}
-
-/** The install action for a kernel that has the module but never loaded it. */
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
-@Composable
-internal fun StatusInstallButton(
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-    label: String = stringResource(R.string.install),
-) {
-    FolkButton(
-        onClick = onClick,
-        modifier = modifier,
-        contentPadding = ButtonDefaults.MediumContentPadding,
-    ) {
-        Text(label)
-    }
-}
-
-/** The jailbreak action, offered while the module is installed but the kernel refuses to load it. */
-@Composable
-internal fun StatusJailbreakButton(
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    FolkButton(
-        onClick = onClick,
-        modifier = modifier,
-        colors = ButtonDefaults.buttonColors(
-            containerColor = MaterialTheme.colorScheme.error,
-            contentColor = MaterialTheme.colorScheme.onError,
-        ),
-    ) {
-        Text(stringResource(R.string.home_jailbreak))
     }
 }
 
@@ -136,10 +98,6 @@ internal fun StatusCard(
                 backgroundColor = MaterialTheme.colorScheme.primary
             )
         }
-    } else if (notInstalled && state.isSELinuxPermissive) {
-        {
-            StatusJailbreakButton(onClick = actions.onJailbreakClick)
-        }
     } else null
 
     HomeCard(
@@ -147,11 +105,6 @@ internal fun StatusCard(
         containerColor = workCardStyle.containerColor,
         contentColor = workCardStyle.contentColor ?: contentColorFor(workCardStyle.containerColor),
         wallpaperRole = workCardStyle.wallpaperRole,
-        onClick = {
-            if (!state.isLateLoadMode) {
-                actions.onInstallClick()
-            }
-        }
     ) {
         Row(
             modifier = Modifier

@@ -106,10 +106,9 @@ private fun DashboardHeroCard(
     }
     val statusSummary = when {
         ksuActive -> stringResource(R.string.home_working_version, "${state.ksuVersion}-${state.kernelUAPIVersion}")
-        notInstalled -> stringResource(R.string.home_click_to_install)
+        notInstalled -> stringResource(R.string.home_not_connected)
         else -> stringResource(R.string.home_unsupported_reason)
     }
-    val jailbreak = notInstalled && state.isSELinuxPermissive
     val backgroundUri = surface.imageUri.takeIf { surface.hasImage }
     val photo = rememberSurfacePhoto(backgroundUri)
     // Once the bitmap is decoded, drop to the photo palette; before that keep the opaque card.
@@ -125,11 +124,6 @@ private fun DashboardHeroCard(
         containerColor = if (overImage) Color.Transparent else MaterialTheme.colorScheme.surfaceBright,
         contentColor = photoContentColor ?: contentColorFor(MaterialTheme.colorScheme.surfaceBright),
         wallpaperRole = if (overImage) null else WallpaperSurfaceRole.Group,
-        onClick = {
-            if (!state.isLateLoadMode) {
-                actions.onInstallClick()
-            }
-        },
         onLongClick = { showOptions = true },
     ) {
         Box(
@@ -169,10 +163,6 @@ private fun DashboardHeroCard(
                                 maxLines = 2,
                                 overflow = TextOverflow.Ellipsis,
                             )
-                        }
-                        if (jailbreak) {
-                            Spacer(Modifier.width(16.dp))
-                            StatusJailbreakButton(onClick = actions.onJailbreakClick)
                         }
                     }
                     val stateTexts = statusStateTexts(state)

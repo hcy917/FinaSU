@@ -154,11 +154,6 @@ private fun GridStatusCard(
         containerColor = containerColor,
         contentColor = contentColor,
         wallpaperRole = workCardStyle.wallpaperRole,
-        onClick = {
-            if (!state.isLateLoadMode) {
-                actions.onInstallClick()
-            }
-        },
         onLongClick = { showWorkCardOptions = true },
     ) {
         Box(
@@ -195,8 +190,6 @@ private fun GridStatusCard(
                             backgroundColor = MaterialTheme.colorScheme.primary
                         )
                     }
-                } else if (notInstalled && state.isSELinuxPermissive) {
-                    StatusJailbreakButton(onClick = actions.onJailbreakClick)
                 }
             }
             if (!workCardSurface.hasFlag(SurfaceFlag.HideIcon)) {

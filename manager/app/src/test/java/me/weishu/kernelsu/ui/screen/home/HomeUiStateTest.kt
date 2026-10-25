@@ -22,7 +22,7 @@ class HomeUiStateTest {
             assertTrue("$layout", home.susfs.detected)
         }
         var opened = false
-        HomeActions({}, {}, onSusfs = { opened = true }).onSusfs()
+        HomeActions(onOpenUrl = {}, onSusfs = { opened = true }).onSusfs()
         assertTrue(opened)
         assertFalse(state(RootShellStatus.Ready).susfs.detected)
     }

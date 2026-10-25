@@ -164,7 +164,6 @@ private fun FocusStatusTile(
 ) {
     val ksuActive = state.ksuVersion != null
     val notInstalled = !ksuActive && state.kernelVersion.isGKI()
-    val jailbreak = notInstalled && state.isSELinuxPermissive
 
     val statusTitle = when {
         ksuActive -> stringResource(R.string.home_working)
@@ -172,17 +171,7 @@ private fun FocusStatusTile(
         else -> stringResource(R.string.home_unsupported)
     }
 
-    val cardAction: (@Composable () -> Unit)? = when {
-        jailbreak -> {
-            { StatusJailbreakButton(onClick = actions.onJailbreakClick) }
-        }
-
-        notInstalled && !state.isLateLoadMode -> {
-            { StatusInstallButton(onClick = actions.onInstallClick) }
-        }
-
-        else -> null
-    }
+    val cardAction: (@Composable () -> Unit)? = null
 
     HomeTileCard(
         title = stringResource(R.string.home_tile_status),
